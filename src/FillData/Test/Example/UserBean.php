@@ -15,6 +15,6 @@ class UserBean extends \FillData\ToObject
     /** @var string  */
     public string $sex;
 
-    /** @var \FillData\Test\Example\Job $job  */
+    /** @var \FillData\Test\Example\Job $job */
     public Job $job;
 }
