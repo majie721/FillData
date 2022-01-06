@@ -4,6 +4,7 @@
 namespace FillData\LaravelFill;
 
 
+use FillData\Exceptions\LaravelValidateException;
 use FillData\Interfaces\LaravelRequest;
 use FillData\ToObject;
 use FillData\Traits\LaravelRequestValidationTrait;
@@ -27,7 +28,8 @@ class ValidateRequest extends ToObject implements LaravelRequest
         }
 
         if($validator->fails()){
-           dd($validator->errors(),$validator->errors()->all());
+            $message = implode($this->errorSeparator,$validator->errors()->all());
+            throw new LaravelValidateException($message,$validator->errors());
         }
 
         parent::__construct();
