@@ -176,6 +176,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             ]
         ];
 
+
         var_dump(UserBean::fromList($users));
     }
 
