@@ -16,6 +16,7 @@ class ValidateRequest extends ToObject implements LaravelRequest
     use LaravelRequestValidationTrait;
 
     protected bool $stopOnFirstFailure = false;
+    protected string $errorSeparator = ',';
 
     public function __construct(){
         $data = $this->validateData();
