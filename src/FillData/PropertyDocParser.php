@@ -37,6 +37,7 @@ class PropertyDocParser
      * @throws \ErrorException
      * @throws \FillData\Exceptions\ErrorFieldException
      * @throws \ReflectionException
+     * @throws \JsonException
      */
     public function fillTypeData($data = [], bool $smart = false, array $parentProperties = []): void
     {
@@ -44,8 +45,8 @@ class PropertyDocParser
             return;
         }
 
-        if ($data instanceof ArrayAble) {
-            $data = $data->toArray();
+        if (is_object($data)) {
+            $data = (array)json_decode(json_encode($data,JSON_THROW_ON_ERROR),true,512,JSON_THROW_ON_ERROR);
         }
 
         $propertyTypes = $this->getPropertyTypes();
